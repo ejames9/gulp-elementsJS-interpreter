@@ -1,5 +1,5 @@
 {
-  "name": "elements-interpreter",
+  "name": "gulp-elementsJS-interpreter",
   "version": "0.1.0",
   "description": "An interpreter that parses a file for elements.js syntax and replaces it with 'legal' VanillaJS.",
   "main": "index.js",
@@ -20,7 +20,4 @@
   ],
   "author": "Eric James Foster",
   "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.1.0",
-  }
 }
