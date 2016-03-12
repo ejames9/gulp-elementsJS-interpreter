@@ -16,12 +16,17 @@
       "XXX",
       "IDEA",
       "NOTE",
+      "TEST",
       "REVIEW"
     ]
   },
   "lists": [
     {
       "name": "FIXME",
+      "hidden": false
+    },
+    {
+      "name": "TEST",
       "hidden": false
     },
     {

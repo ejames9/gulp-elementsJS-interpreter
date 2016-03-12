@@ -9,7 +9,7 @@ License: MIT
 var Transform = require('stream').Transform,
        //  fs = require('fs'),
          util = require('util'),
-       // vfs = require('vinyl-fs'),
+       vfs = require('vinyl-fs'),
    // rawBody = require('raw-body'),
           log = require('elements.js').log,
         gutil = require('gulp-util'),
@@ -18,7 +18,7 @@ var Transform = require('stream').Transform,
   PluginError = gutil.PluginError;
 
 
-const ElementsInterpreter = require('./ElementsInterpreter');
+const ElementsInterpreter = require('./lib/ElementsInterpreter');
 
 const PLUGIN_NAME = 'gulp-elementsJS-interpreter';
 
@@ -37,7 +37,7 @@ function gulpElementsInterpreter() {
   //Internal plugin function, does the actual transformation of files.
   this._elementStream = ()=> {
     var s = streamer(function write(data) {
-      data = ElementsInterpreter(data);    log(data, ['cyanBright', 'bold']);
+      data = ElementsInterpreter(data);
       this.emit('data', data);
     });
     return s;
@@ -46,10 +46,10 @@ function gulpElementsInterpreter() {
   /*Create stream for files to pass through.
   Define _transform method as required by node for Transform streams*/
   this._transform = (file, encoding, fin)=> {
-    console.dir(file);
+    // console.dir(file);
     //If file is Vinyl object, continue to transformation.
-    if (file._isVinyl) {
-      log('file is Vinyl', ['magentaBright', 'bold']);
+    if (file) {
+      //log('file is Vinyl', ['magentaBright', 'bold']);
       //If file is null, emit PluginError.
       if (file.isNull()) {
         this.emit('error', new PluginError(PLUGIN_NAME, 'File is Null'));
@@ -57,18 +57,18 @@ function gulpElementsInterpreter() {
       }
       //If file is buffer, transform it, and push it back to the stream.
       if (file.isBuffer()) {
-        log('file is Buffer', ['cyanBright', 'bold']);
-        log(file.contents, 'cyanBright');
+        // log('file is Buffer', ['cyanBright', 'bold']);
+        // log(file.contents, 'cyanBright');
 
         //Transform file.contents, convert back to a buffer, and push it back to stream.
         this.file = file.contents;
-        this.file = ElementsInterpreter(this.file);        log(this.file, ['green', 'bold']);
+        this.file = ElementsInterpreter(this.file);
         file.contents = new Buffer(this.file);
 
       //If file is stream, pipe it through internal transform function.
       } else if (file.isStream()) {
-        log('file is Stream', ['cyanBright', 'bold']);
-        log(file.contents, 'cyanBright');
+        // log('file is Stream', ['cyanBright', 'bold']);
+        // log(file.contents, 'cyanBright');
 
         //Define the transformation stream.
         this._transformStream = this._elementStream();
@@ -84,7 +84,7 @@ function gulpElementsInterpreter() {
       fin();
     }
     //Push file to next plugin.
-    this.push(file);
+    this.push(file);                                 log(file, ['green', 'bold']);
     //Tell stream engine we are done with file.
     fin();
   };
@@ -96,3 +96,9 @@ util.inherits(gulpElementsInterpreter, Transform);
 
 
 module.exports = gulpElementsInterpreter;
+
+
+
+// vfs.src('./lib/test/elemsTest.js', {buffer: false})
+// .pipe(gulpElementsInterpreter())
+// .pipe(vfs.dest('./lib/test/output.js/'));
