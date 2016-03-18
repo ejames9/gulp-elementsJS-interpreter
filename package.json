@@ -1,11 +1,11 @@
 {
   "name": "gulp-elementsjs-interpreter",
   "version": "0.1.0",
-  "author": "",
-  "description": "parses files for 'illegal' elements.js syntax sugar, and replaces it with 'legal' elements.js alias functions",
+  "author": "Eric James Foster",
+  "description": "parses files for 'illegal' elementsJS syntax, and replaces it with 'legal' elementsJS alias functions",
   "main": "index.js",
   "dependencies": {
-    "elements.js": "^1.0.0",
+    "elementsJS": "^1.0.0",
     "event-stream": "^3.3.2",
     "gulp-util": "^3.0.7",
     "webpack-sources": "^0.1.1"
@@ -15,12 +15,11 @@
     "gulp": "^3.9.1",
     "gulp-mocha": "^2.2.0",
     "mocha": "2.4.5",
-    "space-preconfigured-mocha": "^1.1.2",
     "vinyl": "^1.1.1",
     "vinyl-fs": "^2.3.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp"
   },
   "repository": {
     "type": "git",
