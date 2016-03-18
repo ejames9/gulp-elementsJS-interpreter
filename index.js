@@ -9,9 +9,9 @@ License: MIT
 var Transform = require('stream').Transform,
        //  fs = require('fs'),
          util = require('util'),
-       vfs = require('vinyl-fs'),
+          vfs = require('vinyl-fs'),
    // rawBody = require('raw-body'),
-          log = require('elements.js').log,
+          log = require('elementsJS').log,
         gutil = require('gulp-util'),
      streamer = require('event-stream').through,
 
@@ -99,6 +99,6 @@ module.exports = gulpElementsInterpreter;
 
 
 
-// vfs.src('./lib/test/elemsTest.js', {buffer: false})
+// vfs.src('./lib/test/IO/elemsTestInput.js', {buffer: false})
 // .pipe(gulpElementsInterpreter())
-// .pipe(vfs.dest('./lib/test/output.js/'));
+// .pipe(vfs.dest('./lib/test/'));
