@@ -1,11 +1,11 @@
 {
   "name": "gulp-elementsjs-interpreter",
-  "version": "0.1.0",
+  "version": "1.7.11",
   "author": "Eric James Foster",
-  "description": "parses files for 'illegal' elementsJS syntax, and replaces it with 'legal' elementsJS alias functions",
+  "description": "parses files for elementsJS syntax, and replaces it with 'legal' elementsJS alias functions",
   "main": "index.js",
   "dependencies": {
-    "elementsJS": "^1.0.0",
+    "elementsJS": "^0.9.18",
     "event-stream": "^3.3.2",
     "gulp-util": "^3.0.7",
     "webpack-sources": "^0.1.1"

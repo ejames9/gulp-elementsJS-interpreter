@@ -84,7 +84,7 @@ function gulpElementsInterpreter() {
       fin();
     }
     //Push file to next plugin.
-    this.push(file);                                 log(file, ['green', 'bold']);
+    this.push(file);                                 
     //Tell stream engine we are done with file.
     fin();
   };
