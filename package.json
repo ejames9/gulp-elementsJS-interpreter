@@ -8,6 +8,7 @@
     "elementsJS": "^0.9.18",
     "event-stream": "^3.3.2",
     "gulp-util": "^3.0.7",
+    "lodash": "^4.13.1",
     "webpack-sources": "^0.1.1"
   },
   "devDependencies": {
