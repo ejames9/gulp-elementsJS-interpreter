@@ -1,6 +1,6 @@
 {
   "name": "gulp-elementsjs-interpreter",
-  "version": "1.8.5",
+  "version": "1.8.6",
   "author": "Eric James Foster",
   "description": "parses files for elementsJS syntax, and replaces it with 'legal' elementsJS alias functions",
   "main": "index.js",
