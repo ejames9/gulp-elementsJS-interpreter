@@ -3,31 +3,14 @@
 If you don't know how to use gulp, you can find a nice tutorial [here](http://www.sitepoint.com/introduction-gulp-js/). First, you will need to install the gulp-elementsJS-interpreter package (Along with gulp and any other plug-ins you'll be using). It is available on npm's registry:
 
 ```
-$ npm i --save-dev gulp-elementsJS-interpreter 
+$ npm i --save-dev gulp-elementsJS-interpreter
 ```
 
 In case you are new to npm, the *--save-dev* simply lists the package as one of your **devDependencies** in your application's *package.json* file. To use the interpreter, see below:
 
 ```javascript
-//import the necessary modules
-var elemsJS = require('gulp-elementsJS-interpreter'),
-     uglify = require('gulp-uglify'),
-      babel = require('gulp-babel'),
-       gulp = require('gulp');
 
-//define task, source file and destination
- gulp.task('default', ()=> {
-   var srcJS = './index.js',
-       dest  = './dist/';
-//stream file through elemsJS-interpreter, babel and uglify
-   return gulp.src(srcJS)
-  	  .pipe(elemsJS()) //<<-ALWAYS PUT AT BEGINNING OF STREAM.
-      .pipe(babel())
-      .pipe(uglify())
-      .pipe(gulp.dest(dest));
-   });             
 ```
-* Note - Always put the elementsJS-interpreter first in your stream, otherwise you will run into many errors.
 
 
 

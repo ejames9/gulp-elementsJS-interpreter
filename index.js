@@ -7,37 +7,36 @@ License: MIT
 */
 
 var Transform = require('stream').Transform,
-       //  fs = require('fs'),
+           fs = require('fs'),
          util = require('util'),
           vfs = require('vinyl-fs'),
-   // rawBody = require('raw-body'),
           log = require('elementsJS').log,
         gutil = require('gulp-util'),
      streamer = require('event-stream').through,
+        _____ = require('_____'),
 
   PluginError = gutil.PluginError;
 
 
-const ElementsInterpreter = require('./lib/ElementsInterpreter');
 
-const PLUGIN_NAME = 'gulp-elementsJS-interpreter';
+const PLUGIN_NAME = '';
 
 
 
 //PLugin
-function gulpElementsInterpreter() {
+function gulp_____Plugin() {
   /*If the interpreter is not instantiated by having called the function with the "new" keyword, return
   a "new" instance of the class.*/
-  if (!(this instanceof gulpElementsInterpreter)) {
-    return new gulpElementsInterpreter();
+  if (!(this instanceof gulp_____Plugin)) {
+    return new gulp_____Plugin();
   }
   //This is a trick that applies the internal properties of the Transform class to my interpreter class.
   Transform.call(this, {objectMode: true} );
 
   //Internal plugin function, does the actual transformation of files.
-  this._elementStream = ()=> {
+  this._stream = ()=> {
     var s = streamer(function write(data) {
-      data = ElementsInterpreter(data);
+      data = _____(data);
       this.emit('data', data);
     });
     return s;
@@ -62,7 +61,7 @@ function gulpElementsInterpreter() {
 
         //Transform file.contents, convert back to a buffer, and push it back to stream.
         this.file = file.contents;
-        this.file = ElementsInterpreter(this.file);
+        this.file = _____(this.file);
         file.contents = new Buffer(this.file);
 
       //If file is stream, pipe it through internal transform function.
@@ -71,7 +70,7 @@ function gulpElementsInterpreter() {
         // log(file.contents, 'cyanBright');
 
         //Define the transformation stream.
-        this._transformStream = this._elementStream();
+        this._transformStream = this._stream();
         //Catch errors from the stream and emit a gulp PluginError.
         this._transformStream.on('error', this.emit.bind(this, 'error'));
         //Transform the contents.
@@ -84,21 +83,21 @@ function gulpElementsInterpreter() {
       fin();
     }
     //Push file to next plugin.
-    this.push(file);                                 
+    this.push(file);
     //Tell stream engine we are done with file.
     fin();
   };
 }
 
 //This will apply the internal "methods" of the Transform class to my interpreter.
-util.inherits(gulpElementsInterpreter, Transform);
+util.inherits(gulp_____Plugin, Transform);
 
 
 
-module.exports = gulpElementsInterpreter;
+module.exports = gulp_____Plugin;
 
 
 
-// vfs.src('./lib/test/IO/elemsTestInput.js', {buffer: false})
-// .pipe(gulpElementsInterpreter())
+// vfs.src('./lib/test/IO/TestInput.js', {buffer: false})
+// .pipe(gulp_____Plugin())
 // .pipe(vfs.dest('./lib/test/'));
