@@ -1,12 +1,12 @@
-## <a class='titleLinks' id='interpreter-install'>Installing the elementsJS Interpreter</a>   
+## <a class='titleLinks' id='interpreter-install'>Installing the elementsJS Transpiler</a>   
 ### Using gulp.js  [<img src='http://media-cache-ak0.pinimg.com/736x/a7/7e/81/a77e816ed0b0c1ed28d60b6b9d4860b1.jpg' height='60px'/>](http://gulpjs.com/)
-If you don't know how to use gulp, you can find a nice tutorial [here](http://www.sitepoint.com/introduction-gulp-js/). First, you will need to install the gulp-elementsJS-interpreter package (Along with gulp and any other plug-ins you'll be using). It is available on npm's registry:
+If you don't know how to use gulp, you can find a nice tutorial [here](http://www.sitepoint.com/introduction-gulp-js/). First, you will need to install the gulp-elementsJS-transpiler package (Along with gulp and any other plug-ins you'll be using). It is available on npm's registry:
 
 ```
-$ npm i --save-dev gulp-elementsJS-interpreter
+$ npm i --save-dev gulp-elementsJS-transpiler
 ```
 
-In case you are new to npm, the *--save-dev* simply lists the package as one of your **devDependencies** in your application's *package.json* file. To use the interpreter, see below:
+In case you are new to npm, the *--save-dev* simply lists the package as one of your **devDependencies** in your application's *package.json* file. To use the transpiler, see below:
 
 ```javascript
 
@@ -21,7 +21,7 @@ In case you are new to npm, the *--save-dev* simply lists the package as one of 
 --
 The **`imports()`** function is a convenience function that allows the quick importing of many modules and/or module functions all at once. It is not necessary to use this function in order to use the library, it just makes it quicker/easier to import all of its' functions separately.
 
-- Note- Use of this function requires compilation by the **elementsJS-interpreter**.
+- Note- Use of this function requires compilation by the **elementsJS-transpiler**.
 
 In order to use the imports function, it must first be imported from the module as such:
 
